@@ -11,6 +11,11 @@ Spree::Api::V1::UsersController.class_eval do
       @user.generate_spree_api_key!
       respond_with(@user, status: 201, default_template: :show)
     else
+      puts '###################### Custom log ##############################'
+      puts @user.errors.to_json
+      puts '###################### Custom log End ##############################'
+
+
       invalid_resource!(@user)
     end
   end
