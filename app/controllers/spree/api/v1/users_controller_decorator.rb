@@ -9,7 +9,7 @@ Spree::Api::V1::UsersController.class_eval do
 
     if @user.save 
       @user.generate_spree_api_key!
-      respond_with(@user.attributes.merge(token: @user.spree_api_key), status: 201, default_template: :show)
+      respond_with(@user.attributes.merge!(token: @user.spree_api_key), status: 201, default_template: :show)
     else
       invalid_resource!(@user)
     end
