@@ -17,11 +17,11 @@ Spree::Api::V1::UsersController.class_eval do
 
   def handle_social
       if params[:omniauth].present? && @user = Spree.user_class.find_for_database_authentication(login: params[:omniauth][:email])
-        render json: {user:{
+        render json: {
             id:    @user.id,
             email: @user.email,
             token: @user.spree_api_key
-          }}
+          }
       end
   end
 end
